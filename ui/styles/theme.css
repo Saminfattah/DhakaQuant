@@ -1,0 +1,130 @@
+:root {
+  --accent: #0f766e;
+  --accent-soft: rgba(15, 118, 110, 0.10);
+  --warning-soft: rgba(217, 119, 6, 0.11);
+}
+
+.block-container {
+  max-width: 1480px;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+[data-testid="stSidebar"] {
+  border-right: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.research-banner {
+  align-items: center;
+  background: var(--warning-soft);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  border-radius: 0.65rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin: 0.25rem 0 1.35rem;
+  padding: 0.75rem 1rem;
+}
+
+.research-banner strong {
+  color: #b45309;
+}
+
+.research-banner span {
+  color: #64748b;
+  font-size: 0.86rem;
+}
+
+.page-kicker {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.reason-chip {
+  background: var(--accent-soft);
+  border: 1px solid rgba(15, 118, 110, 0.22);
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 0.75rem;
+  margin: 0.15rem;
+  padding: 0.2rem 0.55rem;
+}
+
+.st-key-overview_dates [data-testid="stMetric"],
+.st-key-overview_coverage [data-testid="stMetric"],
+.st-key-overview_model [data-testid="stMetric"] {
+  background: rgba(248, 250, 252, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.6rem;
+  min-height: 6.35rem;
+  padding: 0.72rem 0.85rem;
+}
+
+.st-key-overview_dates [data-testid="stMetricValue"],
+.st-key-overview_coverage [data-testid="stMetricValue"],
+.st-key-overview_model [data-testid="stMetricValue"] {
+  font-size: clamp(1.1rem, 1.6vw, 1.55rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.st-key-overview_dates [data-testid="stMetricLabel"] p,
+.st-key-overview_coverage [data-testid="stMetricLabel"] p,
+.st-key-overview_model [data-testid="stMetricLabel"] p {
+  font-weight: 650;
+  white-space: normal;
+}
+
+.st-key-overview_model [data-testid="stCode"] {
+  margin-bottom: 0.7rem;
+}
+
+@media (max-width: 1100px) {
+  .st-key-overview_dates [data-testid="stHorizontalBlock"],
+  .st-key-overview_model_section [data-testid="stHorizontalBlock"],
+  .st-key-overview_signal_counts [data-testid="stHorizontalBlock"],
+  .st-key-overview_charts [data-testid="stHorizontalBlock"],
+  .st-key-overview_rankings [data-testid="stHorizontalBlock"] {
+    flex-wrap: wrap;
+  }
+
+  .st-key-overview_dates [data-testid="stColumn"] {
+    flex: 1 1 200px !important;
+    width: auto !important;
+  }
+
+  .st-key-overview_model_section [data-testid="stColumn"] {
+    flex: 1 1 300px !important;
+    width: auto !important;
+  }
+
+  .st-key-overview_signal_counts [data-testid="stColumn"] {
+    flex: 1 1 180px !important;
+    width: auto !important;
+  }
+
+  .st-key-overview_charts [data-testid="stColumn"],
+  .st-key-overview_rankings [data-testid="stColumn"] {
+    flex: 1 1 420px !important;
+    width: auto !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .research-banner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .st-key-overview_dates [data-testid="stMetric"],
+  .st-key-overview_coverage [data-testid="stMetric"],
+  .st-key-overview_model [data-testid="stMetric"] {
+    min-height: auto;
+  }
+}

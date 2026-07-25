@@ -1,0 +1,93 @@
+project:
+  timezone: Asia/Dhaka
+  random_seed: 42
+paths:
+  raw: data/raw
+  processed: data/processed
+  features: data/features
+  outputs: data/outputs
+  models: models
+  logs: logs
+ingestion:
+  kaggle_dataset: muhammedalif/dsc-prices
+  dse_archive_url: https://www.dsebd.org/day_end_archive.php
+  company_listing_url: https://www.dsebd.org/company_listing.php
+  filter_to_current_listings: true
+  minimum_listed_tickers: 200
+  allow_listing_cache_fallback: true
+  archive_start_override: null
+  chunk_days: 30
+  request_timeout_seconds: 30
+  request_retries: 4
+  retry_min_seconds: 2
+  retry_max_seconds: 30
+  rate_limit_seconds: 1.0
+  use_system_ca_store: true
+  user_agent: Mozilla/5.0 (compatible; DSEQuantResearch/1.0)
+  write_csv_copy: true
+validation:
+  reject_invalid_rows: true
+  minimum_rows_per_recent_session: 50
+  join_boundary_sessions: 10
+  join_return_warning: 0.50
+model_universe:
+  exclude_fixed_income: true
+  fixed_income_candidate_patterns:
+    - ^TB(?:2|5|10|15|20)Y\d+$
+    - BOND
+    - SUKUK
+    - PB$
+    - ^DEB
+  classification_workers: 4
+features:
+  minimum_history: 60
+  stale_price_sessions: 5
+  low_volume_lookback: 20
+  low_volume_threshold: 10000
+  low_turnover_threshold: 100000
+  floor_flat_sessions: 3
+model:
+  training_strategy: walk_forward
+  prediction_horizon: 3
+  minimum_return_threshold: 0.0
+  validation_fraction: 0.15
+  test_fraction: 0.15
+  embargo_sessions: 3
+  probability_threshold: 0.50
+  class_weight: null
+  minimum_training_rows: 10000
+  minimum_validation_rows: 1000
+  walk_forward:
+    training_windows_years:
+      - 5
+      - 7
+      - 10
+    validation_years:
+      - 2022
+      - 2023
+      - 2024
+      - 2025
+    holdout_year: 2026
+    exclude_risk_flagged_rows: true
+    threshold_start: 0.45
+    threshold_stop: 0.75
+    threshold_step: 0.025
+    minimum_call_rate: 0.05
+    minimum_fold_call_rate: 0.02
+  parameters:
+    objective: binary
+    n_estimators: 500
+    learning_rate: 0.04
+    num_leaves: 31
+    max_depth: -1
+    subsample: 0.85
+    colsample_bytree: 0.85
+    reg_alpha: 0.1
+    reg_lambda: 0.2
+    n_jobs: -1
+    verbosity: -1
+signals:
+  buy_watch_threshold: 0.70
+  sell_review_threshold: 0.60
+  minimum_validation_precision: 0.65
+  require_model_quality_for_buy: true
