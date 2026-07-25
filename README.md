@@ -57,6 +57,19 @@ If PowerShell script execution is unavailable, run:
 
 Open `http://127.0.0.1:8501`.
 
+### Streamlit Community Cloud
+
+Deploy with these coordinates:
+
+- Repository: `Saminfattah/DhakaQuant`
+- Branch: `main`
+- Main file path: `ui/app.py`
+- Python: `3.12`
+
+The deployment-specific dependencies are pinned in `ui/requirements.txt`. The root
+`requirements.txt` remains the complete dependency set for running ingestion, feature building,
+training, prediction, and signals locally.
+
 Dashboard areas:
 
 - **Overview** — freshness, model gate, signal counts, probability distributions, and recent logs.
