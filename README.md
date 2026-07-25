@@ -64,11 +64,12 @@ Deploy with these coordinates:
 - Repository: `Saminfattah/DhakaQuant`
 - Branch: `main`
 - Main file path: `ui/app.py`
-- Python: `3.12`
+- Python: `3.14`
 
 The deployment-specific dependencies are pinned in `ui/requirements.txt`. The root
 `requirements.txt` remains the complete dependency set for running ingestion, feature building,
-training, prediction, and signals locally.
+training, prediction, and signals locally. The hosted UI uses a newer PyArrow release with a
+prebuilt Python 3.14 Linux wheel, while the local worker remains tested on Python 3.12.
 
 Dashboard areas:
 
