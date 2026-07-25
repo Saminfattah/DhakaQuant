@@ -2,7 +2,7 @@
 # The full local worker dependency set remains in the repository-root requirements.txt.
 streamlit==1.60.0
 pandas==2.3.3
-pyarrow==20.0.0
+pyarrow==24.0.0
 plotly==6.9.0
 PyYAML==6.0.3
 joblib==1.5.3
